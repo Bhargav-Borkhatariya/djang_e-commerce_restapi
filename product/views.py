@@ -5,6 +5,7 @@ from rest_framework.status import (
     HTTP_400_BAD_REQUEST,
     HTTP_404_NOT_FOUND,
     HTTP_204_NO_CONTENT,
+    HTTP_200_OK,
 )
 from product.models import Product
 from product.serializers import ProductSerializer
@@ -22,7 +23,7 @@ class ProductListAPIView(APIView):
         search_query = request.query_params.get('search', None)
         if search_query:
             products = Product.objects.filter(
-                Q(name__icontains=search_query) | Q(description__icontains=search_query)
+                Q(name__icontains=search_query) | Q(description__icontains=search_query) | Q(category__name__iexact=search_query)
             )
         else:
             products = Product.objects.all()
@@ -97,3 +98,43 @@ class ProductDetailAPIView(APIView):
             "message": "Product not found",
             "data": None,
         }, status=HTTP_404_NOT_FOUND)
+
+
+class ProductFilterAPIView(APIView):
+    """
+    API View for filtering products by category, price, and other attributes.
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        category = request.query_params.get('category')
+        min_price = request.query_params.get('min_price')
+        max_price = request.query_params.get('max_price')
+        other_attrs = {}
+        for param in request.query_params:
+            if param not in ['category', 'min_price', 'max_price']:
+                other_attrs[param] = request.query_params.get(param)
+
+        products = Product.objects.all()
+
+        if category:
+            products = products.filter(category=category)
+
+        if min_price:
+            products = products.filter(price__gte=min_price)
+
+        if max_price:
+            products = products.filter(price__lte=max_price)
+
+        if other_attrs:
+            query = Q()
+            for key, value in other_attrs.items():
+                query &= Q(**{key: value})
+            products = products.filter(query)
+
+        serializer = ProductSerializer(products, many=True)
+        return Response({
+            "status": True,
+            "message": "Product List",
+            "data": serializer.data,
+        }, status=HTTP_200_OK)
