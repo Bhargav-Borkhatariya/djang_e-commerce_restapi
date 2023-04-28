@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "authentication",
+    "product",
+    "cart",
 ]
 
 MIDDLEWARE = [
@@ -151,3 +153,8 @@ EMAIL_PORT = os.environ.get("EMAIL_PORT")
 EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+
+
+# media
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
