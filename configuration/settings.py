@@ -158,3 +158,14 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 # media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# rest token
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
+
+# stripe
+STRIPE_PUBLIC_KEY = 'pk_test_51N1r5jSC0JiDTBEpE9j65mUbx3qcOjGJmHbbiM0Vl3WhleRwxDOkxEXva7DEJN8hOfy2KlCFvVAMzb6R05nQgIoL004uwtyZhl'
+STRIPE_SECRET_KEY = 'sk_test_51N1r5jSC0JiDTBEpnRYBv48JYPxcXuDVbyV7lKboCrGU0CdEBaOKh3w30c1NqQksHdnBePSIFhVEmebikCgdDAQ600rYQzU1DS'
