@@ -36,9 +36,6 @@ Windows: ``` lib/bin/activate``` (Not sure.)
 You are good go, open browser and open your localhost url.
 Mostly at 127.0.0.0:8000
 
-## Authors
-
-- [@Bhargav](https://github.com/Bhargav-Wappnet)
 
 
 ## 🚀 About Me
@@ -52,7 +49,3 @@ I'm a python developer...
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bhargav-borkhatariya-bb5010195/)
 
-
-## Support
-
-For support, email bhargav.wappnet@gmail.com or join our Slack channel.
