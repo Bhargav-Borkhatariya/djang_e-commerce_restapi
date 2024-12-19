@@ -1,6 +1,3 @@
-# djang_commerce_restapi
-In this you can find e-commerce's restapis
-
 # Features
 User authentication and authorization
 CRUD (create, read, update, delete) operations for products
@@ -48,4 +45,3 @@ I'm a python developer...
 ## 🔗 Links
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/bhargav-borkhatariya-bb5010195/)
-
